@@ -13,6 +13,7 @@ app.logger.addHandler(handler)
 app.logger.setLevel(logging.INFO)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_base = 'https://openai.nooc.ink/v1'
 
 
 @app.route("/", methods=("GET", "POST"))
