@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+  <title>聊天机器人</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='dog.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
+  <h3>聊天机器人</h3>
+  <form action="/chat" method="get">
+    <input type="text" name="keyword" placeholder="请输入问题" required />
+    <input type="submit" value="确定" />
+  </form>
+  <br/><br/>
+
+  {% if keyword %}
+  <div style="width: 800px;height: 50px;background-color: silver;padding:20px 20px;" class="keyword">
+    {{ keyword }}
+  </div>
+  {% endif %}
+
+  {% if result %}
+  <div style="width: 800px;height: 200px;background-color: mediumturquoise;padding:20px 20px;" class="result">
+    {{ result }}
+  </div>
+  {% endif %}
+</body>

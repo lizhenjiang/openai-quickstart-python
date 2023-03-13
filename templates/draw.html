@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+  <title>画图机器人</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='dog.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
+  <h3>画图机器人</h3>
+  <form action="/draw" method="get">
+    <input type="text" name="keyword" placeholder="请描述一幅图" required />
+    <input type="submit" value="开始" />
+  </form>
+
+  <br/><br/>
+
+  {% if keyword %}
+  <div style="width: 800px;height: 50px;background-color: silver;padding:20px 20px;">
+    {{ keyword }}
+  </div>
+  {% endif %}
+
+  <br/><br/>
+
+  {% if result %}
+      {% for url in result %}
+      <img src="{{ url }}"  />
+      {% endfor %}
+  {% endif %}
+</body>
